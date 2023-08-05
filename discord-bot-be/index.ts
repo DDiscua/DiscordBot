@@ -20,12 +20,15 @@ validateEnvs(ENVS);
 
 const app: Application = express();
 
-app.use(express.json({ limit: "10kb" }));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/health", healthCheck);
 app.use("/webhook", webhook);
+
+app.use(express.json({ limit: "10kb" }));
+app.use("/health", healthCheck);
+
 
 
 // UnKnown Routes
