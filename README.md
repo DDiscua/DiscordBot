@@ -29,3 +29,10 @@ Follow env example for more details
 - APPLICATION_NAME=BotApp
 - DATADOG_API_KEY_DEV=
 - DATADOG_APP_KEY_DEV=
+
+## Stripe 
+
+For local test , you need to install stripe cli and do forwarding to the webhook
+
+- Test webhook : https://dashboard.stripe.com/test/webhooks/create?endpoint_location=local
+- Stripe CLI: https://stripe.com/docs/stripe-cli

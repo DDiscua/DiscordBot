@@ -6,7 +6,7 @@ import { registerSlashCommand } from './bot/registerSlashCommand';
 import * as dotenv from 'dotenv';
 import { LOGGER } from './logger';
 import { connectDb } from './mongodb';
-import { healthCheck } from "./api/services";
+import { healthCheck, webhook } from "./api/services";
 import { getErrorMessage } from "./util";
 
 dotenv.config();
@@ -25,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/health", healthCheck);
+app.use("/webhook", webhook);
 
 
 // UnKnown Routes
