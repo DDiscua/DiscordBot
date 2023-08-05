@@ -40,6 +40,13 @@ webhook.post('/hook', express.raw({ type: 'application/json' }), (request, respo
             // Then define and call a method to handle the successful payment intent.
             // handlePaymentIntentSucceeded(paymentIntent);
             break;
+        case 'charge.succeeded':
+            const charge = event.data.object;
+            console.log(`PaymentIntent for ${charge.amount} was successful!`);
+            LOGGER.info(`[webhook][PaymentIntent for ${charge.amount} was successful!]`, { metadata: {} });
+            // Then define and call a method to handle the successful payment intent.
+            // handlePaymentIntentSucceeded(paymentIntent);
+            break;
         case 'payment_method.attached':
             const paymentMethod = event.data.object;
             // Then define and call a method to handle the successful attachment of a PaymentMethod.

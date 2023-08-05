@@ -5,11 +5,10 @@ import { LOGGER } from '../../logger';
 export const addUser = async ({
     discordUserName,
     discordId,
-    firstName,
-    lastName,
+    discordRoles,
 }: Pick<
     UserDoc,
-    'discordUserName' | 'discordId' | 'firstName' | 'lastName'
+    'discordUserName' | 'discordId' | 'discordRoles'
 >): Promise<UserDoc | null> => {
     try {
         const user = await getUserByDiscordId(discordId);
@@ -20,8 +19,7 @@ export const addUser = async ({
         const newUser = new User({
             discordUserName,
             discordId,
-            firstName,
-            lastName,
+            discordRoles
         });
 
         const saveduser = await newUser.save();
@@ -58,7 +56,7 @@ export const getUserById = async (
 };
 
 export const getUserByDiscordId = async (
-    id: number
+    id: string
 ): Promise<UserDoc | null> => {
     try {
         const user = await User.findOne({ discordId: id });
@@ -120,7 +118,7 @@ export const updateUserById = async (
 };
 
 export const updateUserByDiscordId = async (
-    discordId: number,
+    discordId: string,
     update: Partial<UserDoc>
 ): Promise<UserDoc | null> => {
     try {

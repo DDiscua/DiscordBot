@@ -2,7 +2,7 @@ import stripe from 'stripe';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY || "";
+const STRIPE_SECRET_KEY = process.env.STRIPE_PRIVATE_SECRET_KEY_TEST || "";
 
 
 const stripeClient = new stripe(STRIPE_SECRET_KEY, {
